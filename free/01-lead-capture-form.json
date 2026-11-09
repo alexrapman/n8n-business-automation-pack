@@ -1,0 +1,346 @@
+{
+  "name": "01 Lead Capture Form to Sheet + Email + Telegram",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Request a quote",
+        "formDescription": "Tell us what you need. We reply within one business day.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Name",
+              "fieldType": "text",
+              "requiredField": true,
+              "placeholder": "Jane Doe",
+              "fieldName": "name"
+            },
+            {
+              "fieldLabel": "Email",
+              "fieldType": "email",
+              "requiredField": true,
+              "placeholder": "jane@company.com",
+              "fieldName": "email"
+            },
+            {
+              "fieldLabel": "Phone",
+              "fieldType": "text",
+              "requiredField": false,
+              "placeholder": "+40 700 000 000",
+              "fieldName": "phone"
+            },
+            {
+              "fieldLabel": "Service",
+              "fieldType": "dropdown",
+              "requiredField": true,
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Website"
+                  },
+                  {
+                    "option": "Automation"
+                  },
+                  {
+                    "option": "Consulting"
+                  },
+                  {
+                    "option": "Other"
+                  }
+                ]
+              },
+              "fieldName": "service"
+            },
+            {
+              "fieldLabel": "Message",
+              "fieldType": "textarea",
+              "requiredField": false,
+              "placeholder": "What do you need?",
+              "fieldName": "message"
+            }
+          ]
+        },
+        "responseMode": "onReceived",
+        "options": {
+          "path": "lead-form",
+          "buttonLabel": "Send request",
+          "appendAttributionToForm": false
+        }
+      },
+      "id": "c6ba6fe6-0818-425a-906f-54cda8a0138b",
+      "name": "Lead Form",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "3b9a5cc3-4023-4ee7-973a-9f375ebd89ea"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "name",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "a2",
+              "name": "email",
+              "value": "={{ $json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "a3",
+              "name": "phone",
+              "value": "={{ $json.phone }}",
+              "type": "string"
+            },
+            {
+              "id": "a4",
+              "name": "service",
+              "value": "={{ $json.service }}",
+              "type": "string"
+            },
+            {
+              "id": "a5",
+              "name": "message",
+              "value": "={{ $json.message }}",
+              "type": "string"
+            },
+            {
+              "id": "a6",
+              "name": "source",
+              "value": "form",
+              "type": "string"
+            },
+            {
+              "id": "a7",
+              "name": "created_at",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "894673bc-43ef-413f-86dd-238f9781e0aa",
+      "name": "Normalize Lead",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        250,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "sheet",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "YOUR_SHEET_ID"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": "Leads",
+          "cachedResultName": "Leads"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "name": "={{ $json.name }}",
+            "email": "={{ $json.email }}",
+            "phone": "={{ $json.phone }}",
+            "service": "={{ $json.service }}",
+            "message": "={{ $json.message }}",
+            "source": "={{ $json.source }}",
+            "created_at": "={{ $json.created_at }}"
+          },
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "service",
+              "displayName": "service",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "source",
+              "displayName": "source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c672e48d-2770-4713-b689-3d5cc7705cd6",
+      "name": "Save Lead",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        500,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "sendTo": "={{ $('Normalize Lead').item.json.email }}",
+        "subject": "=We received your request, {{ $('Normalize Lead').item.json.name }}",
+        "emailType": "html",
+        "message": "=<div style=\"font-family:Arial,sans-serif;line-height:1.6\"><h2>Thanks, {{ $('Normalize Lead').item.json.name }}!</h2><p>We received your request for <strong>{{ $('Normalize Lead').item.json.service }}</strong>.</p><p>Our team will reply within one business day.</p><p>— The team</p></div>",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "7de2ab9e-d110-4a79-9b1a-ec65c2a243ce",
+      "name": "Send Confirmation",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        750,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "YOUR_TELEGRAM_CHAT_ID",
+        "text": "=New lead: {{ $('Normalize Lead').item.json.name }} | {{ $('Normalize Lead').item.json.service }} | {{ $('Normalize Lead').item.json.phone }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "id": "a206a597-451e-4359-905b-8e2a665c524e",
+      "name": "Notify Team",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1000,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Lead Form": {
+      "main": [
+        [
+          {
+            "node": "Normalize Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Lead": {
+      "main": [
+        [
+          {
+            "node": "Save Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Lead": {
+      "main": [
+        [
+          {
+            "node": "Send Confirmation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Confirmation": {
+      "main": [
+        [
+          {
+            "node": "Notify Team",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d97d52f9-d420-4d76-aa31-73f977a0471f",
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "pinData": {},
+  "tags": []
+}

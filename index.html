@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>n8n Business Automation Pack — 12 workflows for small business</title>
+<meta name="description" content="12 ready-to-import n8n workflows for leads, invoices, reminders, reviews, reports and backups. Google Sheets + Gmail + Telegram. Setup script, sample data, 7 guides. €49.">
+<meta property="og:title" content="n8n Business Automation Pack">
+<meta property="og:description" content="12 ready-to-import workflows for small business. Connect Google Sheets, Gmail and Telegram. €49.">
+<meta property="og:type" content="product">
+<meta property="og:image" content="https://alexrapman.github.io/n8n-business-automation-pack/assets/cover.png">
+<meta property="og:url" content="https://alexrapman.github.io/n8n-business-automation-pack/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="n8n Business Automation Pack">
+<meta name="twitter:description" content="12 ready-to-import workflows for small business. €49.">
+<meta name="twitter:image" content="https://alexrapman.github.io/n8n-business-automation-pack/assets/cover.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230b1220'/><path d='M18 32h8l6-10 6 20 6-10h6' fill='none' stroke='%23ff6b35' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<style>
+  :root{
+    --bg:#0b1220; --panel:#101a2c; --panel2:#0d1626; --line:#22314b;
+    --text:#e8eef8; --muted:#93a4bd; --accent:#ff6b35; --accent2:#ff8a5c;
+    --green:#22c55e; --radius:14px; --max:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;height:auto;display:block}
+  picture{display:block}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .eyebrow{font:600 12px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:10px;font-weight:700;border:1px solid transparent;transition:transform .15s ease,background .15s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--accent);color:#140a05;box-shadow:0 10px 30px rgba(255,107,53,.2)}
+  .btn-primary:hover{background:var(--accent2)}
+  .btn-ghost{border-color:var(--line);background:transparent;color:var(--text)}
+  .btn-ghost:hover{border-color:var(--accent)}
+  .top{position:sticky;top:0;z-index:20;background:rgba(11,18,32,.86);backdrop-filter:blur(12px);border-bottom:1px solid rgba(34,49,75,.7)}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:18px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;white-space:nowrap}
+  .top .btn{white-space:nowrap}
+  .brand svg{width:30px;height:30px}
+  .nav{display:flex;gap:26px;align-items:center;font-size:14px;color:var(--muted)}
+  .nav a:hover{color:var(--text)}
+  .hero{padding:84px 0 56px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:-30% -20% auto;height:620px;background:radial-gradient(50% 50% at 50% 50%,rgba(255,107,53,.16),transparent 70%);pointer-events:none}
+  .hero .wrap{position:relative}
+  .hero-copy{max-width:860px}
+  h1{font-size:clamp(38px,5vw,64px);line-height:1.04;letter-spacing:-.04em;margin:16px 0 20px;max-width:760px}
+  h1 span{color:var(--accent)}
+  .lede{font-size:19px;color:var(--muted);max-width:620px;margin:0 0 28px}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px}
+  .trust{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--muted);font-size:13px}
+  .trust b{color:var(--text)}
+  .hero .shot{margin-top:42px}
+  .shot{position:relative;border:1px solid var(--line);border-radius:16px;background:var(--panel2);padding:10px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+  .shot .bar{display:flex;gap:6px;padding:2px 4px 10px}
+  .shot .bar i{width:9px;height:9px;border-radius:50%;background:#2a3a55}
+  .shot img{border-radius:9px;border:1px solid #1b2942}
+  .shot .tag{position:absolute;right:18px;bottom:-14px;background:var(--green);color:#04140a;font:700 12px/1 ui-monospace,monospace;padding:8px 10px;border-radius:6px;letter-spacing:.04em}
+  section{padding:70px 0;border-top:1px solid rgba(34,49,75,.55)}
+  .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:30px}
+  h2{font-size:clamp(28px,3.4vw,42px);line-height:1.1;letter-spacing:-.03em;margin:8px 0 0}
+  .section-head p{color:var(--muted);max-width:520px;margin:0}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .card h3{margin:0 0 8px;font-size:18px;letter-spacing:-.01em}
+  .card p{margin:0;color:var(--muted);font-size:14.5px}
+  .num{font:700 12px/1 ui-monospace,monospace;color:var(--accent);letter-spacing:.08em}
+  .problem .card{border-top:3px solid #2a3a55}
+  .problem .card:nth-child(2){border-top-color:var(--accent)}
+  .problem .card:nth-child(3){border-top-color:var(--green)}
+  .inside{grid-template-columns:repeat(3,1fr)}
+  .inside .card{display:flex;gap:14px;align-items:flex-start}
+  .ico{flex:0 0 40px;width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:#17243a;border:1px solid #26385a;color:var(--accent);font:700 15px/1 ui-monospace,monospace}
+  .list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 28px;margin-top:26px}
+  .list div{display:flex;gap:10px;align-items:baseline;padding:10px 0;border-bottom:1px solid rgba(34,49,75,.65);font-size:14.5px}
+  .list b{color:var(--accent);font:700 12px/1 ui-monospace,monospace;min-width:24px}
+  .list span{color:#cfd9e8}
+  .price{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:stretch}
+  .pricebox{background:linear-gradient(180deg,#131f35,#0f192b);border:1px solid #2a3d60;border-radius:16px;padding:34px;position:relative;overflow:hidden}
+  .pricebox:after{content:"";position:absolute;width:240px;height:240px;right:-80px;top:-80px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,53,.22),transparent 68%)}
+  .price-row{display:flex;align-items:baseline;gap:12px;margin:8px 0 2px}
+  .price-row strong{font-size:56px;letter-spacing:-.05em;line-height:1}
+  .price-row s{color:#7184a1;font-size:20px}
+  .pricebox ul{list-style:none;padding:0;margin:20px 0 26px;display:grid;gap:10px;color:#cfd9e8;font-size:14.5px}
+  .pricebox li:before{content:"✓";color:var(--green);font-weight:800;margin-right:10px}
+  .guarantee{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:30px;display:flex;flex-direction:column;justify-content:center}
+  .guarantee .big{font-size:22px;font-weight:800;letter-spacing:-.02em;margin:8px 0 10px}
+  .guarantee p{color:var(--muted);font-size:14.5px;margin:0 0 18px}
+  details{border-bottom:1px solid var(--line);padding:16px 0}
+  summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";color:var(--accent);font-weight:800}
+  details[open] summary:after{content:"−"}
+  details p{color:var(--muted);font-size:14.5px;margin:10px 0 0;max-width:820px}
+  .footer{padding:44px 0 60px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+  .footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .footer a{color:#cfd9e8}
+  .footer a:hover{color:var(--accent)}
+  .note{font-size:12.5px;color:#7184a1;margin-top:12px}
+  @media(max-width:500px){
+    .brand{font-size:14px}
+    .top .btn{font-size:13px;padding:0 12px}
+    .top .wrap{gap:10px}
+  }
+  @media(max-width:900px){
+    .price{grid-template-columns:1fr}
+    .hero{padding-top:56px}
+    .g3,.inside{grid-template-columns:1fr}
+    .g2,.list{grid-template-columns:1fr}
+    .nav{display:none}
+    section{padding:52px 0}
+    .section-head{display:block}
+    .section-head p{margin-top:14px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="SmallBiz Automation home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#101a2c" stroke="#26385a"/><path d="M14 32h8l6-11 8 22 6-11h8" fill="none" stroke="#ff6b35" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      SmallBiz Automation
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#inside">What's inside</a>
+      <a href="#workflows">Workflows</a>
+      <a href="#price">Price</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary" style="min-height:42px;padding:0 16px;font-size:14px" href="https://smallbizautomation.gumroad.com/l/n8n-business-pack">Get the pack — €49</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="eyebrow">n8n · Google Sheets · Gmail · Telegram</div>
+      <h1>Stop rebuilding the same <span>12 automations</span>.</h1>
+      <p class="lede">A complete pack of ready-to-import n8n workflows for the boring work every small business runs on: leads, invoices, reminders, reviews, reports and backups.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://smallbizautomation.gumroad.com/l/n8n-business-pack">Get the pack — €49</a>
+        <a class="btn btn-ghost" href="https://github.com/alexrapman/n8n-business-automation-pack/tree/main/free">Try a free workflow</a>
+      </div>
+      <div class="trust">
+        <span><b>Instant</b> ZIP download</span>
+        <span><b>14-day</b> money back</span>
+        <span><b>Single-business</b> license</span>
+      </div>
+    </div>
+    <div class="shot">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <picture>
+        <source media="(max-width: 700px)" srcset="assets/workflow-canvas-detail.png">
+        <img src="assets/workflow-canvas-crop.png" width="1330" height="370" alt="The lead capture workflow open in the n8n editor: Form Trigger, Google Sheets, Gmail and Telegram connected left to right.">
+      </picture>
+      <div class="tag">imported in n8n 2.35.3</div>
+    </div>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="eyebrow">The problem</div><h2>Most “templates” stop at the screenshot.</h2></div>
+      <p>You do not need another 40-hour course. You need the wiring done, the sheet schema defined, and a way to test before touching real customer data.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card"><h3>You rebuild the same flow</h3><p>Lead form → sheet → email → notification. Every project starts from zero, with a different column name and a broken date filter.</p></div>
+      <div class="card"><h3>Half-finished JSON</h3><p>Missing credentials notes, no sample data, no matching sheet headers. Import works; runtime does not.</p></div>
+      <div class="card"><h3>No test path</h3><p>You cannot risk live invoices or real customers on an untested workflow. Without sample data, you test in production.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="inside">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="eyebrow">What's inside</div><h2>Everything between the ZIP and “running”.</h2></div>
+      <p>Twelve workflows, one spreadsheet schema, sample rows, a setup script and seven guides. Built for n8n 1.80+ and tested on 2.35.3.</p>
+    </div>
+    <div class="grid inside">
+      <div class="card"><div class="ico">12</div><div><h3>Workflow JSON files</h3><p>Import, connect three services, activate. Layouts are readable, not stacked.</p></div></div>
+      <div class="card"><div class="ico">8</div><div><h3>Sheet tabs</h3><p>Exact headers for Leads, Invoices, Appointments, Services, Orders, Tickets, Content and Lead Scoring.</p></div></div>
+      <div class="card"><div class="ico">CSV</div><div><h3>Sample data</h3><p>Eight CSV files with realistic rows, so every branch can be tested before real data.</p></div></div>
+      <div class="card"><div class="ico">.mjs</div><div><h3>Setup script</h3><p>Replaces the three placeholders in all twelve files at once. Validates the JSON after writing.</p></div></div>
+      <div class="card"><div class="ico">7</div><div><h3>Guides</h3><p>Setup, credentials, sheet schema, workflow reference, testing, customization, troubleshooting.</p></div></div>
+      <div class="card"><div class="ico">XLSX</div><div><h3>Spreadsheet template</h3><p>Nine tabs, exact headers and dropdown validation. Import it to Google Sheets and start.</p></div></div>
+    </div>
+    <div class="list" aria-label="Workflow list">
+      <div><b>01</b><span>Lead capture form → Sheets → Gmail → Telegram</span></div>
+      <div><b>02</b><span>Website lead webhook → Sheets → auto-reply</span></div>
+      <div><b>03</b><span>Overdue invoice digest every morning</span></div>
+      <div><b>04</b><span>Appointment reminders for tomorrow</span></div>
+      <div><b>05</b><span>Review request after a completed service</span></div>
+      <div><b>06</b><span>New order alert with items</span></div>
+      <div><b>07</b><span>Daily sales report at 20:00</span></div>
+      <div><b>08</b><span>Support inbox triage → urgent Telegram</span></div>
+      <div><b>09</b><span>Content scheduler → publish today's post</span></div>
+      <div><b>10</b><span>Weekly Google Sheets CSV backup by email</span></div>
+      <div><b>11</b><span>Lead scoring webhook → hot / warm / cold</span></div>
+      <div><b>12</b><span>Workflow error alerts → Telegram + email</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="workflows">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="eyebrow">Built to be read</div><h2>See the actual canvas before you buy.</h2></div>
+      <p>The screenshot on this page is the imported workflow, not a mockup. The JSON ships with pixel positions, named nodes and a trigger you can run immediately.</p>
+    </div>
+    <div class="shot" style="max-width:760px;margin:0 auto">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <img src="assets/workflow-canvas-detail.png" width="730" height="370" alt="Close-up of the first three n8n nodes: Lead Form, Normalize Lead and Save Lead, connected left to right.">
+    </div>
+    <p class="note" style="text-align:center">Shown before credentials are connected. Red badges disappear once you connect your own Google and Telegram accounts.</p>
+  </div>
+</section>
+
+<section id="price">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="eyebrow">One payment</div><h2>€49. No subscription.</h2></div>
+      <p>Regular price €79. Launch price for the first 20 copies. Includes every workflow, the XLSX schema, sample data, the setup script and all seven guides.</p>
+    </div>
+    <div class="price">
+      <div class="pricebox">
+        <div class="eyebrow">n8n Business Automation Pack</div>
+        <div class="price-row"><strong>€49</strong><s>€79</s><span style="color:var(--green);font-weight:700;font-size:13px">launch</span></div>
+        <p style="color:var(--muted);margin:4px 0 0">One ZIP. Instant download. Yours to use in your business and in client projects.</p>
+        <ul>
+          <li>12 workflow JSON files + readable layouts</li>
+          <li>9-tab XLSX spreadsheet template</li>
+          <li>8 sample CSV files</li>
+          <li>configure.mjs setup script</li>
+          <li>7 documentation guides</li>
+          <li>Single-business license</li>
+        </ul>
+        <a class="btn btn-primary" style="width:100%" href="https://smallbizautomation.gumroad.com/l/n8n-business-pack">Get the pack on Gumroad</a>
+        <div class="note">Secure checkout by Gumroad. Card or PayPal. VAT handled at checkout where applicable.</div>
+      </div>
+      <div class="guarantee">
+        <div class="eyebrow">Zero-risk test</div>
+        <div class="big">14 days to import it and run the sample data.</div>
+        <p>If the pack does not import or the workflows do not run with the provided sample data, send the exact error and I will fix it or refund you. No “it works on my machine”.</p>
+        <a class="btn btn-ghost" href="https://github.com/alexrapman/n8n-business-automation-pack/tree/main/free">Download the free sample first</a>
+        <div class="note">Support: justpilugames@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap" style="max-width:900px">
+    <div class="section-head"><div><div class="eyebrow">FAQ</div><h2>Before you buy.</h2></div></div>
+    <details><summary>Do I need to know JavaScript?</summary><p>No. The Code nodes are already written. You can change a threshold or a message without touching code; the customization guide shows where.</p></details>
+    <details><summary>Which n8n version is this for?</summary><p>Built for n8n 1.80+ and tested on 2.35.3 self-hosted. The JSON uses current node versions; older instances may need a node upgrade prompt accepted on import.</p></details>
+    <details><summary>What accounts do I need?</summary><p>A Google account with Sheets and Gmail access, and optionally a Telegram bot. The credentials guide covers n8n Cloud, self-hosted OAuth and the exact redirect URL.</p></details>
+    <details><summary>Is Google Sheets required?</summary><p>Yes, Sheets is the database in this pack. That is intentional: you can inspect and edit every row without a database admin. The schema is documented and the XLSX matches it.</p></details>
+    <details><summary>Can I use it for client projects?</summary><p>Yes. The single-business license covers your own business and client projects. You may not resell, redistribute or publish the JSON or docs as a template pack.</p></details>
+    <details><summary>Does it work with n8n Cloud?</summary><p>Yes. The only extra step is Google OAuth: Cloud has a managed Google credential, so you do not create a Google Cloud project. The credentials guide covers both paths.</p></details>
+    <details><summary>What happens after payment?</summary><p>Gumroad shows the download immediately and emails a receipt. The ZIP contains README.md and docs/SETUP.md; the first run takes about 30 minutes including Google OAuth.</p></details>
+    <details><summary>Can I get a refund?</summary><p>Yes, 14 days. If the pack does not import or the included sample data does not run, send the exact error and execution screenshot; I will fix it or refund it.</p></details>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <div class="brand" style="color:var(--text);margin-bottom:8px">SmallBiz Automation</div>
+      <div>Practical n8n workflows for small businesses.</div>
+      <div class="note">Independent product. Not affiliated with n8n GmbH, Google or Telegram.</div>
+    </div>
+    <div style="text-align:right">
+      <div><a href="https://smallbizautomation.gumroad.com/l/n8n-business-pack">Buy the pack — €49</a></div>
+      <div><a href="https://github.com/alexrapman/n8n-business-automation-pack">GitHub</a></div>
+      <div><a href="mailto:justpilugames@gmail.com">justpilugames@gmail.com</a></div>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Product",
+  "name":"n8n Business Automation Pack",
+  "description":"12 ready-to-import n8n workflows for small business: leads, invoices, appointments, reviews, orders, reports, support triage, content scheduling, backups and error alerts.",
+  "image":"https://alexrapman.github.io/n8n-business-automation-pack/assets/cover.png",
+  "brand":{"@type":"Brand","name":"SmallBiz Automation"},
+  "offers":{"@type":"Offer","url":"https://smallbizautomation.gumroad.com/l/n8n-business-pack","priceCurrency":"EUR","price":"49","availability":"https://schema.org/InStock"},
+  "category":"Business Automation Software"
+}
+</script>
+</body>
+</html>
