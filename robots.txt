@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alexrapman.github.io/n8n-business-automation-pack/sitemap.xml
